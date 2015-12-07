@@ -46,7 +46,8 @@ positive X coordinates are offsets from the left. You may not use negative coord
 
 ## Ship Placement
 
-Below is an example of placing ships on a board. You must place 5 ships of the following lengths:
+Below is an example of placing ships on a board. You must place 5 ships of the following lengths.
+
 | Size | Number of Ships|
 |------|----------------|
 | 2    | 1              |
