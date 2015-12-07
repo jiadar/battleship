@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20151207005957) do
     t.string   "state",           default: "waiting", null: false
     t.integer  "player_one",                          null: false
     t.integer  "player_two"
+    t.string   "guid",                                null: false
     t.integer  "current_turn_id",                     null: false
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false

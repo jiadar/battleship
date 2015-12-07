@@ -6,6 +6,7 @@
 #  state           :string           default("waiting"), not null
 #  player_one      :integer          not null
 #  player_two      :integer
+#  guid            :string           not null
 #  current_turn_id :integer          not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
@@ -14,6 +15,8 @@
 class Game < ActiveRecord::Base
 
   STATES = ["waiting", "placing", "playing", "completed"]
+
+  before_create :create_guid
 
   validates :state, inclusion: { in: STATES }
 
@@ -43,6 +46,10 @@ class Game < ActiveRecord::Base
   end
 
   private
+
+  def create_guid
+    self.guid = SecureRandom.hex(10)
+  end
 
   def full?
     self.player_one && self.player_two

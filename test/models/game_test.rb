@@ -6,6 +6,7 @@
 #  state           :string           default("waiting"), not null
 #  player_one      :integer          not null
 #  player_two      :integer
+#  guid            :string           not null
 #  current_turn_id :integer          not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null

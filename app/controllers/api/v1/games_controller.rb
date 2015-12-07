@@ -18,7 +18,7 @@ module Api
 
         if @game.save!
           render status: 200, json: {
-            id: @game.id
+            guid: @game.guid
           } and return
         end
 
@@ -28,7 +28,7 @@ module Api
       end
 
       def show
-        game = Game.find(params[:id])
+        game = Game.find_by_guid(params[:guid])
 
         if game
           render status: 200, json: {
@@ -41,15 +41,16 @@ module Api
         end
       end
 
-      def update
-        @game = Game.find(params[:id])
+      def join
+        guid = params[:guid]
+
+        @game = Game.find_by_guid(guid)
         @game.add_second_player(current_user.id)
         @game.advance_state
 
         if @game.errors.empty? && @game.save
           render status: 200, json: {
-            id: @game.id,
-            state: @game.state
+            game: @game
           }
         else
           render status: 404, json: {
