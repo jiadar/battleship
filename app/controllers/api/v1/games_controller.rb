@@ -46,7 +46,7 @@ module Api
         @game.try_advance_state
         @game.build_boards
 
-        if @game.errors.empty? && @game.save
+        if @game.errors.empty? && @game.save!
           render status: 200, json: {
             game: @game.as_json
           }

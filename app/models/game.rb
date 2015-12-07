@@ -39,7 +39,7 @@ class Game < ActiveRecord::Base
     if self.current_turn_id == self.player_one_id
       self.current_turn_id = self.player_two_id
     else
-      self.current_turn_id == self.player_one_id
+      self.current_turn_id = self.player_one_id
     end
     self.save!
   end
@@ -77,7 +77,7 @@ class Game < ActiveRecord::Base
     self.player_two_id = id
   end
 
-  def try_advance_state
+  def try_advance_state!
     case self.state
     when "waiting"
       self.state = "placing" if full?

@@ -25,7 +25,7 @@ module Api
         if game.state == "placing" && !board.placed
           board.place_ships(board_params[:ships])
           if board.errors.empty?
-            game.try_advance_state
+            game.try_advance_state!
             render status: 200, json: {
               game: game.as_json,
               board: board.as_json
@@ -39,7 +39,7 @@ module Api
           board = game.opponents_board(current_user)
           shot_result = game.handle_shot(board_params[:shot])
           game.swap_turns
-          game.try_advance_state
+          game.try_advance_state!
           render status: 200, json: {
             game: game.as_json,
             shot_result: shot_result,
