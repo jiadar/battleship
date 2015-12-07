@@ -43,6 +43,10 @@ class Board < ActiveRecord::Base
     true
   end
 
+  def placed?
+    self.placed
+  end
+
   def place_shot_and_save!(shot)
     x, y = shot[0], shot[1]
     self.grid[y][x] = -1
@@ -52,7 +56,7 @@ class Board < ActiveRecord::Base
   def result_of_hit(shot)
     x, y = shot[0], shot[1]
     element = self.grid[y][x]
-    
+
     case element
     when element.between?(1,5)
       return "Hit at #{x}, #{y}"

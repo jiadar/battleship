@@ -43,7 +43,7 @@ module Api
 
         @game = Game.find_by_guid(guid)
         @game.add_second_player(current_user.id)
-        @game.try_advance_state
+        @game.try_advance_state!
         @game.build_boards
 
         if @game.errors.empty? && @game.save!

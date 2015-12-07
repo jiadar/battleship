@@ -1,6 +1,6 @@
 module Api
   module V1
-    class BoardsController < ApplicationController
+    class BoardsController < Api::V1::ApiController
 
       def show
         game = Game.find_by_guid(params[:guid])
@@ -20,9 +20,9 @@ module Api
 
       def update
         game = Game.find_by_guid(params[:guid])
-        board = Board.find_by_game_id_and_user_id(params[:guid], current_user.id)
+        board = Board.find_by_game_id_and_user_id(game.id, current_user.id)
 
-        if game.state == "placing" && !board.placed
+        if game.state == "placing" && !board.placed?
           board.place_ships(board_params[:ships])
           if board.errors.empty?
             game.try_advance_state!
