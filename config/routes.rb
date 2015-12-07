@@ -4,8 +4,15 @@ Rails.application.routes.draw do
   namespace :api, constraints: { format: 'json' } do
     namespace :v1, constraints: { format: 'json' } do
       resources :games, only: [:create]
-      put '/games/:guid/join', to: 'games#join'
-      get '/games/:guid', to: 'games#show'
+
+      # GUID-related Games routes
+      get '/games/:guid', to: 'games#show' # Get game info
+      put '/games/:guid/join', to: 'games#join' # Join a created game by GUID
+      put '/games/:guid/update', to: 'games#update' # PUT a move order
+
+      # GUID-related nester Boards routes
+      get '/games/:guid/board', to: 'boards#show'
+      put 'games/:guid/board', to: 'boards#update'
     end
   end
 

@@ -13,7 +13,10 @@
 class User < ActiveRecord::Base
   validates :username, :password_hash, presence: true
   validates :username, uniqueness: true
-  validates :password, length: { minimum: 6, allow_nil: true}
+  validates :password, length: { minimum: 6, allow_nil: true }
+
+  has_many :boards, dependent: :destroy
+  has_many :games, dependent: :destroy
 
   attr_reader :password
 

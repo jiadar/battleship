@@ -11,12 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207005957) do
+ActiveRecord::Schema.define(version: 20151207060813) do
+
+  create_table "boards", force: :cascade do |t|
+    t.integer  "user_id",                    null: false
+    t.integer  "game_id",                    null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.text     "grid"
+    t.boolean  "placed",     default: false
+  end
 
   create_table "games", force: :cascade do |t|
     t.string   "state",           default: "waiting", null: false
-    t.integer  "player_one",                          null: false
-    t.integer  "player_two"
+    t.integer  "player_one_id",                       null: false
+    t.integer  "player_two_id"
     t.string   "guid",                                null: false
     t.integer  "current_turn_id",                     null: false
     t.datetime "created_at",                          null: false

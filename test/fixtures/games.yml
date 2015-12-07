@@ -4,8 +4,8 @@
 #
 #  id              :integer          not null, primary key
 #  state           :string           default("waiting"), not null
-#  player_one      :integer          not null
-#  player_two      :integer
+#  player_one_id   :integer          not null
+#  player_two_id   :integer
 #  guid            :string           not null
 #  current_turn_id :integer          not null
 #  created_at      :datetime         not null
