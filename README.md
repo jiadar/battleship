@@ -21,13 +21,13 @@ usage description.
 
 | Path                            | Params `{key: value}`                         | Success Response    | Use   |
 |---------------------------------|-----------------------------------------------|---------------------|-------|
-| [POST] /users                   | {usernamename: "Colin", password: "p4ssw0rd"} | User JSON object    | Create account |
-| [POST] /sessions                | {usernamename: "Colin", password: "p4ssw0rd"} | User JSON object    | Log in to account |
+| [POST] /users                   | {user:{usernamename: "Colin", password: "p4ssw0rd"}} | User JSON object    | Create account |
+| [POST] /sessions                | {user:{usernamename: "Colin", password: "p4ssw0rd"}} | User JSON object    | Log in to account |
 | [DELETE] /sessions              | {}                                            | Success JSON message| Log out of account |
 | [POST] /api/v1/games            | {}                                            | Game JSON object    | Create a new game lobby|
 | [GET] /api/v1/games/:guid       | {}                                            | Game JSON object    | Get game state from a game GUID|
 | [PUT] /api/v1/games/:guid/join  | {}                                            | Game JSON object    | Join an existing game from a supplied GUID
-| [PUT] /api/v1/games/:guid/board | {shot: [0,0]} or {ships: [...]}               | Game & Board JSON objects, shot result | Send a move to your game board|
+| [PUT] /api/v1/games/:guid/board | board{{shot: [0,0]}} or {board{{ships: [...]}}               | Game & Board JSON objects, shot result | Send a move to your game board|
 | [GET] /api/v1/games/:guid/board |{}                                             | Game & Board JSON objects | Get the board status of a game you are playing|
 
 ## Shot Placement
