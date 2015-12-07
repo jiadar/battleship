@@ -22,7 +22,7 @@ module Api
         game = Game.find_by_guid(params[:guid])
         board = Board.find_by_game_id_and_user_id(params[:guid], current_user.id)
 
-        if game.state == "placing" #&& !board.placed
+        if game.state == "placing" && !board.placed
           board.place_ships(board_params[:ships])
           if board.errors.empty?
             game.try_advance_state
@@ -39,6 +39,7 @@ module Api
           board = game.opponents_board(current_user)
           shot_result = game.handle_shot(board_params[:shot])
           game.swap_turns
+          game.try_advance_state
           render status: 200, json: {
             game: game.as_json,
             shot_result: shot_result,

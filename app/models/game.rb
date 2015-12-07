@@ -114,7 +114,7 @@ class Game < ActiveRecord::Base
   end
 
   def game_over?
-    # win condition check
+    self.player_one_board.lost? || self.player_two_board.lost?
   end
 
   def placed?

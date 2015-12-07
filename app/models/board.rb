@@ -33,6 +33,16 @@ class Board < ActiveRecord::Base
     end
   end
 
+  def lost?
+    self.grid.each do |row|
+      row.each do |cell|
+        return false if cell.between?(1,5)
+      end
+    end
+    
+    true
+  end
+
   def place_shot_and_save!(shot)
     x, y = shot[0], shot[1]
     self.grid[y][x] = -1
