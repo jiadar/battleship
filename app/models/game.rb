@@ -35,7 +35,7 @@ class Game < ActiveRecord::Base
     self.player_one_id == id || self.player_two_id == id
   end
 
-  def swap_turns
+  def swap_turns!
     if self.current_turn_id == self.player_one_id
       self.current_turn_id = self.player_two_id
     else

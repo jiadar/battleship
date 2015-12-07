@@ -39,7 +39,7 @@ class Board < ActiveRecord::Base
         return false if cell.between?(1,5)
       end
     end
-    
+
     true
   end
 
@@ -52,6 +52,7 @@ class Board < ActiveRecord::Base
   def result_of_hit(shot)
     x, y = shot[0], shot[1]
     element = self.grid[y][x]
+    
     case element
     when element.between?(1,5)
       return "Hit at #{x}, #{y}"

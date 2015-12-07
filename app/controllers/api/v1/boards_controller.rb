@@ -38,7 +38,7 @@ module Api
         elsif game.state == "playing" && game.current_turn_id == current_user.id
           board = game.opponents_board(current_user)
           shot_result = game.handle_shot(board_params[:shot])
-          game.swap_turns
+          game.swap_turns!
           game.try_advance_state!
           render status: 200, json: {
             game: game.as_json,

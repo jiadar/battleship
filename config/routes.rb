@@ -8,7 +8,6 @@ Rails.application.routes.draw do
       # GUID-related Games routes
       get '/games/:guid', to: 'games#show' # Get game info
       put '/games/:guid/join', to: 'games#join' # Join a created game by GUID
-      put '/games/:guid/update', to: 'games#update' # PUT a move order
 
       # GUID-related nester Boards routes
       get '/games/:guid/board', to: 'boards#show'
